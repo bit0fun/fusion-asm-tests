@@ -1,0 +1,85 @@
+
+test.elf:     file format elf32-fusion
+
+
+Disassembly of section .text:
+
+00000000 <__start>:
+   0:	4d 8d 70 00 	add	$gr1, $gr2, $gr3
+
+00000004 <__mv_2_ram>:
+   4:	43 08 00 00 	lui	$tmp2, 0x0000
+   8:	43 10 00 c0 	lni	$tmp2, 0x00c0
+   c:	42 e8 00 00 	lui	$tmp1, 0x0000
+  10:	42 f0 00 e0 	lni	$tmp1, 0x00e0
+  14:	42 c8 01 00 	lui	$tmp0, 0x0100
+  18:	42 d0 00 00 	lni	$tmp0, 0x0000
+
+0000001c <ram_loop>:
+  1c:	7b 38 00 00 	lw	$tmp3, 0x000(tmp2)
+  20:	7b 58 00 04 	lw	$tmp4, 0x004(tmp2)
+  24:	7b 78 00 08 	lw	$tmp5, 0x008(tmp2)
+  28:	7b 98 00 0c 	lw	$tmp6, 0x00c(tmp2)
+  2c:	7b b8 00 10 	lw	$tmp7, 0x010(tmp2)
+  30:	5b 18 01 40 	addi	$tmp2, $tmp2, 20
+  34:	74 16 c8 00 	sw	$tmp3, 0x000($tmp0)
+  38:	74 16 d0 04 	sw	$tmp4, 0x004($tmp0)
+  3c:	74 16 d8 08 	sw	$tmp5, 0x008($tmp0)
+  40:	74 16 e0 0c 	sw	$tmp6, 0x00c($tmp0)
+  44:	74 16 e8 10 	sw	$tmp7, 0x010($tmp0)
+  48:	5a d6 01 40 	addi	$tmp0, $tmp0, 20
+  4c:	37 f7 c7 41 	bne	$tmp1,$tmp2,-48
+	...
+
+00000058 <clear_tmp_reg>:
+  58:	4e d6 b0 07 	xor	$tmp0, $tmp0, $tmp0
+  5c:	4e f7 b8 07 	xor	$tmp1, $tmp1, $tmp1
+  60:	4f 18 c0 07 	xor	$tmp2, $tmp2, $tmp2
+  64:	4f 39 c8 07 	xor	$tmp3, $tmp3, $tmp3
+  68:	4f 5a d0 07 	xor	$tmp4, $tmp4, $tmp4
+  6c:	4f 7b d8 07 	xor	$tmp5, $tmp5, $tmp5
+  70:	4f 9c e0 07 	xor	$tmp6, $tmp6, $tmp6
+  74:	4f bd e8 07 	xor	$tmp7, $tmp7, $tmp7
+
+00000078 <__alloc_bss>:
+  78:	40 28 05 20 	lui	$sp, 0x0520
+  7c:	40 30 00 e0 	lni	$sp, 0x00e0
+  80:	40 48 05 20 	lui	$fp, 0x0520
+  84:	40 50 00 e0 	lni	$fp, 0x00e0
+  88:	42 c8 00 00 	lui	$tmp0, 0x0000
+  8c:	10 16 00 a4 	jrl	0x0000a4($tmp0)
+
+00000090 <main_call_trap>:
+	...
+  98:	37 e0 07 e0 	beq	$zero,$zero,-8
+	...
+
+000000a4 <main>:
+  a4:	40 68 00 00 	lui	$gp, 0x0000
+  a8:	79 63 00 00 	lw	$gr0, 0x000(gp)
+  ac:	74 03 58 24 	sw	$gr0, 0x024($gp)
+  b0:	79 83 40 24 	lh	$gr1, 0x024(gp)
+  b4:	79 a3 c0 3c 	lb	$gr2, 0x03c(gp)
+
+Disassembly of section .data:
+
+000000c0 <__data_start__>:
+  c0:	de af be ad 	nri_unk
+
+000000c4 <var2>:
+  c4:	ca fe 00 00 	nri_unk
+	...
+
+000000d0 <var3>:
+  d0:	55 00 00 00 	nri_unk
+	...
+
+Disassembly of section .heap:
+
+000000e0 <__heap_start__>:
+	...
+
+Disassembly of section .stack:
+
+002000e0 <__stack_bottom__>:
+	...

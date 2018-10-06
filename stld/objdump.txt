@@ -1,0 +1,41 @@
+
+st.elf:     file format elf32-fusion
+
+
+Disassembly of section .text:
+
+00000000 <__start>:
+   0:	41 88 20 00 	lui	gr1,	0x2000
+   4:	41 90 00 00 	lni	gr1,	0x0000
+   8:	74 0c 58 00 	sw	gr0,	0x000(gr1)
+   c:	74 0c 58 00 	sw	gr0,	0x000(gr1)
+  10:	74 0c 58 00 	sw	gr0,	0x000(gr1)
+  14:	74 0c 58 00 	sw	gr0,	0x000(gr1)
+	...
+  20:	74 0c 58 04 	sw	gr0,	0x004(gr1)
+  24:	74 0c 58 04 	sw	gr0,	0x004(gr1)
+  28:	74 0c 58 04 	sw	gr0,	0x004(gr1)
+  2c:	74 0c 58 04 	sw	gr0,	0x004(gr1)
+
+Disassembly of section .data:
+
+20000000 <__data_start__>:
+20000000:	ca fe ba be 	ASCII: ¾ º þ Ê
+
+20000004 <var2>:
+20000004:	de ad be ef 	ASCII: ï ¾ ­ Þ
+
+Disassembly of section .bss:
+
+20000008 <__bss_end__-0x18>:
+	...
+
+Disassembly of section .heap:
+
+20000020 <__heap_start__>:
+	...
+
+Disassembly of section .stack:
+
+20200020 <__stack_bottom__>:
+	...
